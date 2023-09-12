@@ -8,7 +8,7 @@ export CONSOLE_URL=$(oc get routes console -n openshift-console -o jsonpath='{.s
 export TOKEN=$(oc whoami -t)
 export API_URL=$(oc whoami --show-server)/openapi/v3/apis/operator.shipwright.io/v1alpha1
 
-# dast_tool_path=./dast_tool
+dast_tool_path=./dast_tool
 echo "$API_URL"
 echo "$CONSOLE_URL"
 
