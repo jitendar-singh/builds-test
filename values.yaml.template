@@ -40,7 +40,7 @@ rapidastConfig: |
     # `application` contains data related to the application, not to the scans.
     application:
         shortName: "ocp"
-        url: "$APP_URL"
+        url: "$API_URL"
     # `general` is a section that will be applied to all scanners.
     general:
 
