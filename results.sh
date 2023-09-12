@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Temp directory to store generated pod yaml
+echo "Fetching Results"
 TMP_DIR=/tmp
 
 # Where to store sync'd results -- defaults to current dir
