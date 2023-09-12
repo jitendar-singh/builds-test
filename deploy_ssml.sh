@@ -9,8 +9,9 @@ export TOKEN=$(oc whoami -t)
 export API_URL=$(oc whoami --show-server)/openapi/v3/apis/operator.shipwright.io/v1alpha1
 
 # dast_tool_path=./dast_tool
-echo "$CONSOLE_URL"
 echo "$API_URL"
+echo "$CONSOLE_URL"
+
 #curl -k "https://${CONSOLE_URL}/api/kubernetes/openapi/v2" -H "Cookie: openshift-session-token=${TOKEN}"  -H "Accept: application/json"  >> openapi.json
 mkdir results 
 api_doc="open-api"
