@@ -1,0 +1,70 @@
+# OpenShift Builds Release Acceptance Test
+
+**Note:** As of now, these tests assume that the Shipwright operator is already installed on the cluster.
+
+## Directory Structure
+```bash
+└── acceptance
+    ├── features
+    │   ├── 01_assert_installation.feature
+    │   ├── __init__.py
+    │   ├── environment.py
+    │   ├── requirements.txt
+    │   └── steps
+    │       ├── __init__.py
+    │       ├── command.py
+    │       ├── environment.py
+    │       ├── namespace.py
+    │       ├── olm.py
+    │       ├── openshift.py
+    │       ├── steps.py
+    │       ├── subscription_install_mode.py
+    │       └── util.py
+    ├── openshift-setup.sh
+    └── resources
+        ├── build_buildpacks-v3_namespaced_cr.yaml
+        └── shipwright_build.yaml
+```
+
+## How to Run the Acceptance Tests
+
+To run the OpenShift Builds Release Acceptance Tests, follow these steps:
+
+1. Make sure you have the necessary dependencies installed which can be found in ```./test/acceptance/features/requirements.txt ```
+
+2. Run the acceptance tests using the provided `test-setup.sh` script:
+
+```bash
+./hack/test-setup.sh
+```
+The script sets up the test environment, installs dependencies, and runs the acceptance tests. Test logs and output will be stored in the designated directories.
+
+## Makefile
+Here is the Makefile target for running the acceptance tests:
+
+```bash
+.PHONY: acceptance
+acceptance:
+    @echo "Testing the test framework on OpenShift"
+    @./hack/test-setup.sh
+```
+You can run the tests by executing:
+```bash
+oc login [cluster-server] -u username -p password --kubeconfig=kubeconfig --insecure-skip-tls-verify=true
+export KUBECONFIG=kubeconfig
+make acceptance
+```
+
+## Test Output
+The test results are JUnit files generated for each feature & are collected in out dir post test run is complete.
+Test logs and output will be stored in the following directories:
+
+Logs Directory: 
+```bash
+${OUTPUT_DIR}/logs
+```
+Acceptance Test Output Directory: 
+```bash
+${OUTPUT_DIR}/ACCEPTANCE
+```
+Please review the test logs and output for details on test results and any issues encountered during testing.
