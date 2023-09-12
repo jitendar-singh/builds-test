@@ -8,13 +8,11 @@ export CONSOLE_URL=$(oc get routes console -n openshift-console -o jsonpath='{.s
 export TOKEN=$(oc whoami -t)
 export API_URL=$(oc whoami --show-server)/openapi/v3/apis/operator.shipwright.io/v1alpha1
 
+export APP_URL=https://$CONSOLE_URL/k8s/cluster/projects/shipwright-build
 dast_tool_path=./dast_tool
 echo "$API_URL"
 echo "$CONSOLE_URL"
-# install envstub
-microdnf update
-microdnf install gettext
-envsubst --version
+
 
 #curl -k "https://${CONSOLE_URL}/api/kubernetes/openapi/v2" -H "Cookie: openshift-session-token=${TOKEN}"  -H "Accept: application/json"  >> openapi.json
 mkdir results 
