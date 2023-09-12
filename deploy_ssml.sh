@@ -29,8 +29,8 @@ echo "api doc $api_doc"
   rapidast_pod=$(oc get pods -n default -l job-name=rapidast-job -o name)
   echo "rapidast current pod $rapidast_pod"
   oc wait --for=condition=Ready $rapidast_pod --timeout=120s
-  response=$($?)
-  echo "response $response"
+#   response=$($?)
+#   echo "response $response"
   oc get $rapidast_pod -o 'jsonpath={..status.conditions}'
   while [[ $(oc get $rapidast_pod -o 'jsonpath={..status.conditions[?(@.type=="Ready")].status}') == "True" ]]; do
     echo "sleeping 5"
