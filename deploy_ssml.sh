@@ -6,11 +6,11 @@ oc label ns default security.openshift.io/scc.podSecurityLabelSync=false pod-sec
 export CONSOLE_URL=$(oc get routes console -n openshift-console -o jsonpath='{.spec.host}')
 
 export TOKEN=$(oc whoami -t)
-export API_URL=$(oc whoami --show-server)/openapi/v3/apis/operator.shipwright.io/v1alpha1
+# export API_URL=$(oc whoami --show-server)/openapi/v3/apis/operator.shipwright.io/v1alpha1
 
 
 dast_tool_path=./dast_tool
-echo "$API_URL"
+# echo "$API_URL"
 echo "$CONSOLE_URL"
 
 #curl -k "https://${CONSOLE_URL}/api/kubernetes/openapi/v2" -H "Cookie: openshift-session-token=${TOKEN}"  -H "Accept: application/json"  >> openapi.json
